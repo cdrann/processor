@@ -21,14 +21,14 @@
 `include "defines.sv"
 
 module RAM(
-    input [ADDR_BITS - 1 : 0] addr_write,
-    input [ADDR_BITS - 1 : 0] addr_read,
-    input [DATA_BITS - 1 : 0] data_write,
-    output [DATA_BITS - 1 : 0] data_read,
+    input [`ADDR_BITS - 1 : 0] addr_write,
+    input [`ADDR_BITS - 1 : 0] addr_read,
+    input [`DATA_BITS - 1 : 0] data_write,
+    output [`DATA_BITS - 1 : 0] data_read,
     input clock_write
     );
     
-    logic [ADDR_BITS - 1 : 0] mem [0 : (2**ADDR_BITS) - 1];
+    logic [2 * `ADDR_BITS - 1 : 0] mem [0 : (2**`ADDR_BITS) - 1];
     
     assign data_read = mem[addr_read];
     

@@ -22,13 +22,13 @@
 
 
 module rom(
-    input [ADDR_BITS - 1 : 0] addr_read,
-    output [2 * DATA_BITS - 1 : 0] data_read
+    input [`ADDR_BITS - 1 : 0] addr_read,
+    output [2 * `DATA_BITS - 1 : 0] data_read
     );
     
     (* rom_style = "{distributed}" *)
-    logic [2 * DATA_BITS - 1 : 0] mem [0 : (2**ADDR_BITS) - 1];
-    initial $readmemh("rom.txt", mem, 0, (2**ADDR_BITS) - 1);
+    logic [2 * `DATA_BITS - 1 : 0] mem [0 : (2**`ADDR_BITS) - 1];
+    initial $readmemh("rom.txt", mem, 0, (2**`ADDR_BITS) - 1);
     
     assign data_read = mem[addr_read];
 endmodule

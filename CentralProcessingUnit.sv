@@ -49,11 +49,12 @@ module cpu(
     
     assign reg_pc_out = cmd_addr;
     assign addr_out = addr;
+    
+    //What is STO
+    //assign addr_write = instruction_register == STO ? addr : addr_write;
+    //6assign data_write = instruction_register == STO ? accumulator : data_write;
 
-    assign addr_write = instruction_register == STO ? addr : addr_write;
-    assign data_write = instruction_register == STO ? accumulator : data_write;
-
-    assign addr_read = instruction_register == `SUM || instruction_register == `SUB || instruction_register == `MULTI || instruction_register == DIV || instruction_register == accumulator || instruction_register == OUT ? addr : addr_read;
+    assign addr_read = instruction_register == `SUM || instruction_register == `SUB || instruction_register == `MULT || instruction_register == `DIV || instruction_register == accumulator || instruction_register == `OUT ? addr : addr_read;
     
     
     always@ (posedge clock) begin
@@ -65,12 +66,12 @@ module cpu(
             accumulator <= reg_reg;
             if (instruction_register == `JUMP)
                 cmd_addr = addr;
+//What is TST            
+//                       (instruction_register == TST ? (!accumulator ? cmd_addr + 2 : cmd_addr + 1) :
+//                        cmd_addr + 1);
             
-                       (instruction_register == TST ? (!accumulator ? cmd_addr + 2 : cmd_addr + 1) :
-                        cmd_addr + 1);
             
-            
-            port_out <= instruction_register == OUT ? accumulator : port_out;
+            port_out <= instruction_register == `OUT ? accumulator : port_out;
         end
     end
 
