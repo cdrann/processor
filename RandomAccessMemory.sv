@@ -28,7 +28,7 @@ module RAM(
     input clock_write
     );
     
-    logic [2 * `ADDR_BITS - 1 : 0] mem [0 : (2**`ADDR_BITS) - 1];
+    logic [2 * `ADDR_BITS - 1 : 0] mem [0 : (2 **`ADDR_BITS) - 1];
     
     assign data_read = mem[addr_read];
     

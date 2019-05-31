@@ -23,21 +23,34 @@
     
  
 module ALU (
-    input [7:0] data_A,
-    input [7:0] data_B,
+    input [`DATA_BITS - 1 : 0] data_A,
+    input [`DATA_BITS - 1 : 0] data_B,
 //    input status_in,
 //    output [3:0] status_out,
-    input [7:0] op_code,
-    output logic [7:0] result
+    input [`DATA_BITS - 1 : 0] op_code,
+     output [`DATA_BITS - 1 : 0] result
     );
     
-    
-    case (op_code)
-        `SUM: result <= data_A + data_B;
-//        `MULT: result <= data_A + data_B;
-//        `DIV: result <= data_A + data_B;
-//        `SUB: result <= data_A - data_B;
+    assign result = (op_code == `SUM) * (data_B + data_A) +
+        (op_code == `SUB) * (data_B - data_A) + 
+        (op_code == `MULT) * (data_B * data_A) + 
+        (op_code == `DIV) * (data_B / data_A) +
+        (op_code == `INC) * (data_A + 1) +
+        (op_code == `DEC) * (data_A - 1) +
+        (op_code == `AND) * (data_B & data_A) +
+        (op_code == `OR) * (data_B | data_A) +
+        (op_code == `XOR) * (data_B ^ data_A) +
+        (op_code == `COMP) * (~data_A);
+//    case (op_code)
+//        `SUM: result <= data_B + data_A;
+//        `MULT: result <= data_B * data_A;
+//        `DIV: result <= data_B / data_A;
+//        `SUB: result <= data_B - data_A;
 //        `INC: result <= data_A + 1;
-//        `DEC: result <= data_A - 1;        
-    endcase
+//        `DEC: result <= data_A - 1;   
+//        `AND: result <= data_B & data_A;
+//        `OR: result <= data_B | data_A;
+//        `XOR: result <= data_B ^ data_A;
+//        `COMP: result <= ~data_A;     
+//    endcase
 endmodule

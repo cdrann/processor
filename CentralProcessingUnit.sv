@@ -39,7 +39,7 @@ module cpu(
     logic [`ADDR_BITS - 1:0] cmd_addr, aux_addr;
     logic [`DATA_BITS - 1:0] data_read, data_write;
     
-    logic [`DATA_BITS - 1:0] accumulator;
+    logic [`DATA_BITS - 1:0] accumulator; //Stores the Result of ALU
     logic [`DATA_BITS - 1:0] reg_reg;
     
     ROM rom(.addr_read(cmd_addr), .data_read({instruction_register, addr}));

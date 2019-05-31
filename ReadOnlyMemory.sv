@@ -26,9 +26,9 @@ module rom(
     output [2 * `DATA_BITS - 1 : 0] data_read
     );
     
-    (* rom_style = "{distributed}" *)
-    logic [2 * `DATA_BITS - 1 : 0] mem [0 : (2**`ADDR_BITS) - 1];
-    initial $readmemh("rom.txt", mem, 0, (2**`ADDR_BITS) - 1);
+    //(* rom_style = "{distributed}" *)
+    logic [2 *`DATA_BITS - 1 : 0] memory [0 : (2 **`ADDR_BITS) - 1];
+    initial $readmemh("rom_image.mem", memory, 0, (2 **`ADDR_BITS) - 1);
     
-    assign data_read = mem[addr_read];
+    assign data_read = memory[addr_read];
 endmodule
