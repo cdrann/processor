@@ -2,12 +2,6 @@ import java.io.*;
 import java.lang.Integer;
 
 public class Assembler {
-
-    public static String removeFirstTwoSymb(String s) {
-        String res = s.substring(2);
-        return res;
-    }
-
     public static String printNZeroes(int n) {
         String s = "";
         for (int i = 0; i < n; i++) {
@@ -20,65 +14,68 @@ public class Assembler {
     public static String parseCommand(String inputString, int numLines) {
         String[] code = inputString.split(" ");
         String result = "";
-        //System.out.println(inputString); //TODO file_output
+        System.out.println(inputString); //TODO file_output
 
         //Determine the instruction and construct the machine code
         switch(code[0]) {
             /*case "SET":
                 result = "01";
-                result += removeFirstTwoSymb(code[1]);
+                result += (code[1]);
                 break; */
+            case "OUT":
+                result = "0000";
+                break;
             case "ADD":
                 result = "05";
-                result += removeFirstTwoSymb(code[1]);
+                result += (code[1]);
                 break;
             case "STO":
                 result = "06";
-                result += removeFirstTwoSymb(code[1]);
+                result += (code[1]);
                 break;
             case "SUB":
                 result = "0a";
-                result += removeFirstTwoSymb(code[1]);
+                result += (code[1]);
                 break;
             case "DIV":
                 result = "0c";
-                result += removeFirstTwoSymb(code[1]);
+                result += (code[1]);
                 break;
             case "LDA":
                 result = "04";
-                result += removeFirstTwoSymb(code[1]);
+                result += (code[1]);
                 break;
             case "SUM":
                 result = "09";
-                result += removeFirstTwoSymb(code[1]);
+                result += (code[1]);
                 break;
             case "MULT":
                 result = "0b";
-                result += removeFirstTwoSymb(code[1]);
+                result += (code[1]);
                 break;
             case "AND":
                 result = "0d";
-                result += removeFirstTwoSymb(code[1]);
+                result += (code[1]);
                 break;
             case "OR":
                 result = "0e";
-                result += removeFirstTwoSymb(code[1]);
+                result += (code[1]);
                 break;
             case "XOR":
                 result = "0f";
-                result += removeFirstTwoSymb(code[1]);
+                result += (code[1]);
                 break;
             case "INC":
-                result = "07";
-                result += "00";
+                result = "0007";
+
                 break;
             case "DEC":
-                result = "08";
-                result += "00";
+                result = "0008";
+
                 break;
             case "JMP":
                 result = "03";
-                result += removeFirstTwoSymb(code[1]);
+                result += (code[1]);
                 break;
                 /*if(code[1].equals("HERE")) {
                     String str = Integer.toHexString(numLines - 1);
@@ -88,18 +85,18 @@ public class Assembler {
                     String str = Integer.toHexString(numLines - 1 + Integer.parseInt(code[2]));
                     result = printNZeroes(2 -  (str.
                             substring(2)).length());
-                    result += (Integer.toHexString(numLines - 1) + (Integer.parseInt(code[3]))).substring(2); // [2:]
+                    result += (Integer.toHexString(numLines - 1) + (Integer.parseInt(code[3]))).substring(2);  [2:]
                 }
                 break; */
-             default:
-                 break;
+            default:
+                break;
         }
         return result;
     }
 
     //assembly code @input_file -> machine code @output_file
     public static void main(String args[]) throws IOException{
-        File file = new File("/Users/Admin/IdeaProjects/HelloWorld/program.txt");
+        File file = new File("/C:/Users/Admin/IdeaProjects/Assembler/program.txt");
         FileReader fr = new FileReader(file);
         BufferedReader reader = new BufferedReader(fr);
 
