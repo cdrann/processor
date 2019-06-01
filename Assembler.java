@@ -29,6 +29,10 @@ public class Assembler {
                 result = "05";
                 result += (code[1]);
                 break;
+            case "JNZ":
+                result = "02";
+                result += (code[1]);
+                break;
             case "STO":
                 result = "06";
                 result += (code[1]);
