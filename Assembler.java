@@ -24,56 +24,63 @@ public class Assembler {
 
         //Determine the instruction and construct the machine code
         switch(code[0]) {
-            case "SET":
-                result = "0a";
-                result += removeFirstTwoSymb(code[1]);
-                break;
-            case "ACC":
+            /*case "SET":
                 result = "01";
                 result += removeFirstTwoSymb(code[1]);
-                break;
-            case "STO":
-                result = "02";
-                result += removeFirstTwoSymb(code[1]);
-                break;
+                break; */
             case "ADD":
-                result = "03";
-                result += removeFirstTwoSymb(code[1]);
-                break;
-            case "SUB":
-                result = "04";
-                result += removeFirstTwoSymb(code[1]);
-                break;
-            case "DIV":
                 result = "05";
                 result += removeFirstTwoSymb(code[1]);
                 break;
-            case "MUL":
+            case "STO":
                 result = "06";
                 result += removeFirstTwoSymb(code[1]);
                 break;
-            case "INC":
+            case "SUB":
+                result = "0a";
+                result += removeFirstTwoSymb(code[1]);
+                break;
+            case "DIV":
+                result = "0c";
+                result += removeFirstTwoSymb(code[1]);
+                break;
+            case "LDA":
+                result = "04";
+                result += removeFirstTwoSymb(code[1]);
+                break;
+            case "SUM":
+                result = "09";
+                result += removeFirstTwoSymb(code[1]);
+                break;
+            case "MULT":
                 result = "0b";
+                result += removeFirstTwoSymb(code[1]);
+                break;
+            case "AND":
+                result = "0d";
+                result += removeFirstTwoSymb(code[1]);
+                break;
+            case "OR":
+                result = "0e";
+                result += removeFirstTwoSymb(code[1]);
+                break;
+            case "XOR":
+                result = "0f";
+                result += removeFirstTwoSymb(code[1]);
+                break;
+            case "INC":
+                result = "07";
                 result += "00";
                 break;
             case "DEC":
-                result = "0c";
-                result += "00";
-                break;
-            case "INP":
-                result = "09";
-                result += "00";
-                break;
-            case "OUT":
-                result = "00";
-                result += "00";
-                break;
-            case "TST":
                 result = "08";
                 result += "00";
                 break;
-            /* case "JMP":
-                if(code[1].equals("HERE")) {
+            case "JMP":
+                result = "03";
+                result += removeFirstTwoSymb(code[1]);
+                break;
+                /*if(code[1].equals("HERE")) {
                     String str = Integer.toHexString(numLines - 1);
                     result = printNZeroes(2 -  (str.substring(2)).length());
                     result += (Integer.toHexString(numLines - 1)).substring(2);
@@ -85,7 +92,6 @@ public class Assembler {
                 }
                 break; */
              default:
-                 //TODO
                  break;
         }
         return result;
