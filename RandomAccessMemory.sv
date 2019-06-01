@@ -25,15 +25,14 @@ module RAM(
     input [`ADDR_BITS - 1 : 0] addr_read,
     input [`DATA_BITS - 1 : 0] data_write,
     output logic [`DATA_BITS - 1 : 0] data_read,
-    input clock,
-    output logic [2 * `ADDR_BITS - 1 : 0][`DATA_BITS - 1 : 0] memory
+    input clock
     );
-    initial memory <= 0;
+    logic [`ADDR_BITS - 1 : 0][`DATA_BITS - 1 : 0] memory = 0;
    // logic [2 * `ADDR_BITS - 1 : 0] memory = 0;
-    assign data_read = memory[addr_read];
+   assign data_read = memory[addr_read];
     
     always @ (posedge clock) begin 
         memory[addr_write] <= data_write;
-//        data_read <= memory[addr_read];
+        //data_read <= memory[addr_read];
     end
 endmodule
