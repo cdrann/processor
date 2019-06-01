@@ -104,7 +104,7 @@ public class Assembler {
         BufferedReader reader = new BufferedReader(fr);
 
         String binaryCode = "";
-        PrintWriter writer = new PrintWriter("machine_code.txt");
+        PrintWriter writer = new PrintWriter("rom_image.mem");
         String cmd = reader.readLine();
         int numLines = 0;
         while (cmd != null) {
