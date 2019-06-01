@@ -45,10 +45,10 @@ public class Assembler {
                 result = "04";
                 result += (code[1]);
                 break;
-            case "SUM":
+           /* case "SUM":
                 result = "09";
                 result += (code[1]);
-                break;
+                break; */
             case "MULT":
                 result = "0b";
                 result += (code[1]);
