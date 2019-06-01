@@ -18,10 +18,10 @@ public class Assembler {
 
         //Determine the instruction and construct the machine code
         switch(code[0]) {
-            /*case "SET":
+            case "SET":
                 result = "01";
                 result += (code[1]);
-                break; */
+                break;
             case "OUT":
                 result = "0000";
                 break;
