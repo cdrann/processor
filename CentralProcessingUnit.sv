@@ -76,12 +76,11 @@ module CPU(
             cmd_addr <= 0;
             port_out <= 0;
         end else begin
-            accumulator <= (instruction_register == `LDA) ? data_read : alu_result;
+            accumulator <= (instruction_register == `LDA) ? data_read : 
+            (instruction_register == `SET) ? addr :
+            alu_result;
             port_out <= (instruction_register == `OUT) ? accumulator : port_out;
-            if (instruction_register == `JUMP)
-                cmd_addr = addr;
-            else
-                cmd_addr++;          
+            cmd_addr <= ((instruction_register == `JMP) || ((instruction_register == `JNZ) && (accumulator != 0))) ? addr : (cmd_addr + 1);          
         end
     end
 

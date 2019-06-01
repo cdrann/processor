@@ -31,7 +31,8 @@ module ALU (
      output [`DATA_BITS - 1 : 0] result
     );
     
-    assign result = (op_code == `ADD) ? (data_B + data_A) :
+    assign result = 
+        (op_code == `ADD) ? (data_B + data_A) :
         (op_code == `SUB) ? (data_B - data_A) : 
         (op_code == `MULT) ? (data_B * data_A) : 
         (op_code == `DIV) ? (data_B / data_A) :
