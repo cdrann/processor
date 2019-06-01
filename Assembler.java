@@ -70,11 +70,11 @@ public class Assembler {
                 result += (code[1]);
                 break;
             case "INC":
-                result = "0007";
+                result = "0700";
 
                 break;
             case "DEC":
-                result = "0008";
+                result = "0800";
 
                 break;
             case "JMP":
