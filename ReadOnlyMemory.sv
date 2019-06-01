@@ -21,7 +21,7 @@
 `include "defines.sv"
 
 
-module rom(
+module ROM(
     input [`ADDR_BITS - 1 : 0] addr_read,
     output [2 * `DATA_BITS - 1 : 0] data_read
     );

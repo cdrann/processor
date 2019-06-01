@@ -31,16 +31,16 @@ module ALU (
      output [`DATA_BITS - 1 : 0] result
     );
     
-    assign result = (op_code == `SUM) * (data_B + data_A) +
-        (op_code == `SUB) * (data_B - data_A) + 
-        (op_code == `MULT) * (data_B * data_A) + 
-        (op_code == `DIV) * (data_B / data_A) +
-        (op_code == `INC) * (data_A + 1) +
-        (op_code == `DEC) * (data_A - 1) +
-        (op_code == `AND) * (data_B & data_A) +
-        (op_code == `OR) * (data_B | data_A) +
-        (op_code == `XOR) * (data_B ^ data_A) +
-        (op_code == `COMP) * (~data_A);
+    assign result = (op_code == `SUM) ? (data_B + data_A) :
+        (op_code == `SUB) ? (data_B - data_A) : 
+        (op_code == `MULT) ? (data_B * data_A) : 
+        (op_code == `DIV) ? (data_B / data_A) :
+        (op_code == `INC) ? (data_B + 1) :
+        (op_code == `DEC) ? (data_B - 1) :
+        (op_code == `AND) ? (data_B & data_A) :
+        (op_code == `OR) ? (data_B | data_A) :
+        (op_code == `XOR) ? (data_B ^ data_A):
+        data_B;
 //    case (op_code)
 //        `SUM: result <= data_B + data_A;
 //        `MULT: result <= data_B * data_A;
